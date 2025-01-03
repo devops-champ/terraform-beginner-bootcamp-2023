@@ -1,4 +1,12 @@
 terraform {
+
+  cloud {
+    organization = "Terraform-darshan"
+    workspaces {
+      name = "terrahouse"    
+    } 
+  }
+
   required_providers {
     random = {
       source = "hashicorp/random"
@@ -7,14 +15,19 @@ terraform {
 
     aws = {
       source = "hashicorp/aws"
-      version = "5.16.2"
+      version = "5.82.2"
     }    
   }
 }
 
+provider "aws" {
+  # Configuration options
+}
 provider "random" {
   # Configuration options
 }
+
+
 
 resource "random_string" "bucket_name" {
   length           = 32
