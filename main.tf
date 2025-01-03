@@ -22,6 +22,7 @@ terraform {
 }
 
 provider "aws" {
+  region = "us-east-1"
 
 }
 
@@ -32,16 +33,17 @@ provider "random" {
 
 
 resource "random_string" "bucket_name" {
-  length           = 32
-  upper = false
-  lower = true
-  special          = false
+  length            = 16
+  upper             = false
+  lower             = true
+  special           = false
 
 }
 
 resource "aws_s3_bucket" "bucket_name" {
   bucket = random_string.bucket_name.result
   
+  depends_on = [random_string.bucket_name]  
 }
 output "random_bucket_name" {
   value = random_string.bucket_name.result
