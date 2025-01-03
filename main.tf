@@ -1,11 +1,12 @@
-terraform {
+terraform { 
+  cloud { 
+    
+    organization = "Terraform-darshan" 
 
-  cloud {
-    organization = "Terraform-darshan"
-    workspaces {
-      name = "terrahouse"    
+    workspaces { 
+      name = "terra-learn" 
     } 
-  }
+  } 
 
   required_providers {
     random = {
@@ -21,7 +22,7 @@ terraform {
 }
 
 provider "aws" {
-  # Configuration options
+  region = "us-east-1"
 }
 provider "random" {
   # Configuration options
